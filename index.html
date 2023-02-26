@@ -34,11 +34,13 @@
             return prompt('Select your weapon (Rock, Paper, or Scissors)').toUpperCase();
         }
 
-        computerSelection = getComputerChoice();
-        playerSelection = getPlayerChoice();
+        
 
         // Play 1 round
         function playRound(playerSelection, computerSelection) {
+            computerSelection = getComputerChoice();
+            playerSelection = getPlayerChoice();
+
             if(playerSelection == computerSelection) {
                 return console.log("It's a tie.");
             } else if(playerSelection == 'ROCK' && computerSelection == 'PAPER') {
@@ -56,7 +58,14 @@
             }
         }
 
-        playRound(playerSelection, computerSelection);
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                playRound();
+            }
+        }
+        
+        game();
+        // playRound(playerSelection, computerSelection);
         
     </script>
 </body>

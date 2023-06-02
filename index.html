@@ -9,7 +9,32 @@
 </head>
 
 <body>
+    
+    <div id="wrapper">
+        <button id="ROCK">Rock</button>
+        <button id="PAPER">Paper</button>
+        <button id="SCISSORS">Scissors</button>
+    </div>
+
+    <div id="result">
+    </div>
+
+    <div id="score">
+    </div>
+
+    <div id="winner"></div>
+
     <script>
+
+        const resultDiv = document.querySelector('#result');
+        const scoreDiv = document.querySelector('#score');
+        const winnerDiv = document.querySelector('#winner');
+
+        const wrapper = document.getElementById('wrapper');
+
+        wrapper.addEventListener('click', game)
+
+
         // Computer generates selection (rock, paper, or scissors)
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
@@ -31,9 +56,10 @@
 
         // Player is asked for selection
         function getPlayerChoice() {
-            return prompt('Select your weapon (Rock, Paper, or Scissors)').toUpperCase();
+            return event.target.id;
         }
 
+         
         let playerScore = 0;
         let computerScore = 0;
 
@@ -43,49 +69,48 @@
             playerSelection = getPlayerChoice();
 
             if(playerSelection == computerSelection) {
-                return console.log("It's a tie.");
+                return resultDiv.textContent = "It's a tie.";
             } else if(playerSelection == 'ROCK' && computerSelection == 'PAPER') {
                 // computerScore += 1;
-                return [console.log('You lose! Paper beats Rock'), computerScore += 1];
+                return [resultDiv.textContent = 'You lose! Paper beats Rock', computerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             } else if(playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
                 // playerScore += 1;
-                return [console.log('You win! Rock beats Scissors'), playerScore += 1];
+                return [resultDiv.textContent = 'You win! Rock beats Scissors', playerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             } else if(playerSelection == 'PAPER' && computerSelection == 'ROCK') {
                 // playerScore += 1;
-                return [console.log('You win! Paper beats Rock'), playerScore += 1];
+                return [resultDiv.textContent = 'You win! Paper beats Rock', playerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             } else if(playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
                 // computerScore += 1;
-                return [console.log('You lose! Scissors beat Paper'), computerScore += 1];
+                return [resultDiv.textContent = 'You lose! Scissors beat Paper', computerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             } else if(playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
                 // computerScore += 1;
-                return [console.log('You lose! Rock beats Scissors'), computerScore += 1];
+                return [resultDiv.textContent = 'You lose! Rock beats Scissors', computerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             } else if(playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
                 // playerScore += 1;
-                return [console.log('You win! Scissors beat Paper'), playerScore += 1];
+                return [resultDiv.textContent = 'You win! Scissors beat Paper', playerScore += 1, scoreDiv.textContent = `Computer Score: ${computerScore}, Your Score: ${playerScore}`];
             }
         }
 
         // Returns the final verdict
         function gameScore() {
             if(playerScore == computerScore) {
-                return console.log('The total score is tied. You both scored ' + playerScore);
+                return winnerDiv.textContent ='The total score is tied. You both scored ' + playerScore;
             } else if(playerScore > computerScore) {
-                return console.log('You win the tournament. You scored ' + playerScore + ' ,the computer scored only ' + computerScore);
+                return winnerDiv.textContent = 'You win the tournament. You scored ' + playerScore + ', the computer scored only ' + computerScore;
             } else {
-                return console.log('You lose the tournament. You scored only ' + playerScore + ' ,the computer scored ' + computerScore);
+                return winnerDiv.textContent = 'You lose the tournament. You scored only ' + playerScore + ', the computer scored ' + computerScore;
             }
         }
 
-        // plays x amount of games
+        // plays until someone reaches x points
         function game() {
-            for (let i = 0; i < 5; i++) {
+            if (playerScore < 5 && computerScore < 5) {
                 playRound();
+            } if (playerScore == 5 || computerScore == 5) {
+                gameScore();
             }
-            gameScore();
         }
-        
-        game();
-        
+                
     </script>
 </body>
 

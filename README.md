@@ -1,2 +1,2 @@
-# rock-paper-scissors
-[Demo](https://rayhen-com.github.io/rock-paper-scissors/)
+# Rock Paper Scissors
+👉 [Live Demo](https://rayhen-com.github.io/rock-paper-scissors/)

@@ -6,23 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div id="header">
+        <h1>Rock Paper Scissors</h1>
+    </div>
     
-    <div id="wrapper">
-        <button id="ROCK">Rock</button>
-        <button id="PAPER">Paper</button>
-        <button id="SCISSORS">Scissors</button>
+    <div id="content">
+        <div id="player-score" class="text">Your Score: 0</div>
+        <div id="computer-score" class="text">Computer Score: 0</div>
+
+        <div id="wrapper">
+            <button id="ROCK">✊</button>
+            <button id="PAPER">✋</button>
+            <button id="SCISSORS">✌️</button>
+        </div>
+
+        <div id="result" class="text"></div>
+
+        <div id="winner" class="text"></div>
+
     </div>
 
-    <div id="result">
+    <div id="footer">
+        <div id="footer-content">
+            Copyright ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script>
+            rayhen      
+            </div>
+            <a href="https://github.com/rayhen-com" target="_blank">
+                <img src="images/github-mark-white.svg" alt="">
+            </a> 
     </div>
-
-    <div id="score">
-    </div>
-
-    <div id="winner"></div>
 
     <script src="main.js"></script>
 </body>
